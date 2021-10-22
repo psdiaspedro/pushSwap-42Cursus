@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:44:05 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/21 16:58:11 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/22 14:40:08 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,22 @@
 
 typedef struct s_stack
 {
-	int capacity; //capacidade total da pilha
-	int top; //topo da pilha
-	int *stack; //ponteiro paro a pilha
+	int		capacity;
+	int		top;
+	int		*stack;
+	char	c;
 }	t_stack;
 
 void	init_stack(t_stack *stack , char **argv);
-t_stack	*create_stack(int capacity);
+t_stack	*create_stack(int capacity, char c);
 int		validate(char **argv);
+void	swap(t_stack *stack);
+void	push(t_stack *stack_src, t_stack *stack_dst);
+void	rotate(t_stack *stack);
+void	reverse_rotate(t_stack *stack);
+void	double_swap(t_stack *stack_a, t_stack *stack_b);
+void	double_rotate(t_stack *stack_a, t_stack *stack_b);
+void	double_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
+void	sort(t_stack *stack_a, t_stack *stack_b);
+
 #endif

@@ -6,18 +6,11 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:08:51 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/21 17:01:47 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/22 13:31:54 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-/*
-	não pode ter duplicatas
-	deve ser um numero int
-	não pode ser maior/menor que int
-	não pode estar organizada (não retorna nada)
-*/
 
 int	is_integer(char **argv)
 {
@@ -55,7 +48,7 @@ int	is_in_range(char **argv)
 	return (1);
 }
 
-int is_duplicate(char **argv)
+int	is_duplicate(char **argv)
 {
 	int	holder;
 	int	i;
@@ -66,7 +59,7 @@ int is_duplicate(char **argv)
 	{
 		j = i + 1;
 		holder = ft_atoi(argv[i]);
-		while(argv[j])
+		while (argv[j])
 		{
 			if(holder == ft_atoi(argv[j]))
 				return (0);
