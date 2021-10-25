@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:44:05 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/22 14:40:08 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/25 14:33:38 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	double_swap(t_stack *stack_a, t_stack *stack_b);
 void	double_rotate(t_stack *stack_a, t_stack *stack_b);
 void	double_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
 void	sort(t_stack *stack_a, t_stack *stack_b);
+int		is_sorted(t_stack *stack);
+void	simple_sort(t_stack *stack);
 
 #endif

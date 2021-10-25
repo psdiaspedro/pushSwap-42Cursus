@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:44:01 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/22 14:43:38 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/25 14:29:48 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,3 @@ int	main(int argc, char **argv)
 	free(stack_b);
 	return (0);
 }
-
-
