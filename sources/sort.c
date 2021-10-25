@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:38:47 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/25 15:09:47 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/25 15:48:53 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 		swap(stack_a);
 	else if (stack_a->capacity == 3)
 		simple_sort(stack_a);
-	// else
-	// 	complex_sort();
+	else
+		complex_sort(stack_a, stack_b);
+
 }

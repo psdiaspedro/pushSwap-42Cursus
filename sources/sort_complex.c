@@ -6,8 +6,13 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:31:46 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/25 14:32:00 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/25 15:49:19 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+sort_complex(t_stack *stack_a, t_stack *stack_b)
+{
+	
+}
