@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:08:51 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/25 15:07:40 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/26 12:03:18 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,3 @@ int	validate(char **argv)
 		return (1);
 	return (0);
 }
-
