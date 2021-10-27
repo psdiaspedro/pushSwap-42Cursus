@@ -6,11 +6,12 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:31:46 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/26 15:56:09 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/27 11:09:02 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include <stdio.h>
 
 int		capacity_chunk(int capacity)
 {
@@ -25,61 +26,73 @@ int		capacity_chunk(int capacity)
 	return (i);
 }
 
+int	is_mid_smaller(t_stack *stack, int mid)
+{
+	int	i;
+	i = 0;
+	while (i <= stack->top)
+	{
+		if (stack->stack[i] >= mid)
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 int	get_chunk(t_stack *stack_a, t_stack *stack_b, int mid)
 {
 	int	i;
-	int	holder_top;
-	int chunk;
+	int	chunk;
 
-	holder_top = stack_a->top + 1;
 	chunk = 0;
-	while((stack_a->top >= (holder_top / 2)) && !is_sorted(stack_a))
+	while (stack_a->stack[stack_a->top] < mid && !is_sorted(stack_a))
 	{
-		while (stack_a->stack[stack_a->top] < mid && !is_sorted(stack_a)
-				&& stack_a->top > 1)
-		{
-			push(stack_a, stack_b);
-			chunk++;
-		}
-		i = 0;
-		while(stack_a->stack[i] < mid && !is_sorted(stack_a)
-				&& stack_a->top > 1)
-		{
-			reverse_rotate(stack_a);
-			push(stack_a, stack_b);
-			chunk++;
-			i++;
-		}
-		while ((stack_a->top >= (holder_top / 2)) && !is_sorted(stack_a))
-		{
-			if (stack_a->stack[stack_a->top] < mid)
-			{
-				push(stack_a, stack_b);
-				chunk++;
-			}
-			else
-				rotate(stack_a);
-		}
+		push(stack_a, stack_b);
+		chunk++;
+	}
+	i = 0;
+	while (stack_a->stack[i] < mid && !is_sorted(stack_a) && stack_a->top > 1)
+	{
+		reverse_rotate(stack_a);
+		push(stack_a, stack_b);
+		i++;
+		chunk++;
+	}
+	while (!is_mid_smaller(stack_a, mid) )
+	{
+		while (stack_a->stack[stack_a->top] >= mid && !is_sorted(stack_a))
+			rotate(stack_a);
+		push(stack_a, stack_b);
+		chunk++;
 	}
 	return (chunk);
 }
 
-void	complex_sort(t_stack *stack_a, t_stack *stack_b)
+int	get_mid(t_stack *stack)
 {
 	int	*copy;
+	int	mid;
+
+	copy = init_copy(stack->stack, stack->top + 1);
+	mid = insertion_sort(copy, stack->top + 1);
+	free(copy);
+	return (mid);
+}
+
+void	complex_sort(t_stack *stack_a, t_stack *stack_b)
+{
 	int	mid;
 	t_stack *chunks;
 
 	chunks = create_stack(capacity_chunk(stack_a->capacity), 'c');
-	while (stack_a->top > 1)
+	while (stack_a->top > 1 && !is_sorted(stack_a))
 	{
-		copy = init_copy(stack_a->stack, stack_a->top + 1);
-		mid = insertion_sort(copy, stack_a->top + 1);
-		//free(copy);
+		mid = get_mid(stack_a);
 		chunks->top++;
 		chunks->stack[chunks->top] = get_chunk(stack_a, stack_b, mid);
 	}
-	// free(chunks->stack);
-	// free(chunks);
+	free(chunks->stack);
+	free(chunks);
 }
- // 0 1 3 5 6 7 9 10 11 12
+//0 1 3 4 5 6 7 9 10 11 12 15
