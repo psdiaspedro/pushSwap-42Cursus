@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:01:31 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 12:24:28 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/27 14:01:31 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,18 @@ int	*init_copy(int *array, int start, int end)
 {
 	int	*copy;
 	int	i;
+	int j;
 	int len;
 
 	len = end - start + 1;
 	copy = malloc(sizeof(int) * len);
 	i = end;
-	while (i >= start)
+	j = len - 1;
+	while (j >= 0)
 	{
-		copy[i] = array[i];
+		copy[j] = array[i];
 		i--;
+		j--;
 	}
 	return (copy);
 }
