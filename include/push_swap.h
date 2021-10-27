@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:44:05 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 12:20:27 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/27 14:33:47 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	complex_sort(t_stack *stack_a, t_stack *stack_b);
 int		insertion_sort(int array[], int len);
 int		*init_copy(int *array, int start, int end);
 int		is_mid_smaller(t_stack *stack, int mid);
+int		is_b_sorted(t_stack *stack);
 
 #endif

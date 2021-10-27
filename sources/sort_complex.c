@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:31:46 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 12:30:06 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/27 14:44:18 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,21 @@ int	get_mid(t_stack *stack)
 
 int	get_mid_chunk(t_stack *stack, t_stack *chunks)
 {
-	int	*copy;
 	int	mid;
-	int start;
-	int end;
+	int	*copy;
+	int	i;
+	int	j;
 
-	start = stack->top + 1 - chunks->stack[chunks->top];
-	end = stack->top;
-	copy = init_copy(stack->stack, start, end);
-	mid = insertion_sort(copy, stack->top + 1);
+	copy = malloc(sizeof(int) * chunks->stack[chunks->top]);
+	i = stack->top + 1 - chunks->stack[chunks->top];
+	j = 0;
+	while (i <= stack->top)
+	{
+		copy[j] = stack->stack[i];
+		i++;
+		j++;
+	}
+	mid = insertion_sort(copy, chunks->stack[chunks->top]);
 	free(copy);
 	return (mid);
 }
@@ -106,11 +112,13 @@ void	complex_sort(t_stack *stack_a, t_stack *stack_b)
 		chunks->stack[chunks->top] = get_chunk(stack_a, stack_b, mid);
 	}
 	sorting_last_items(stack_a, stack_b, chunks);
-	mid = get_mid_chunk(stack_b, chunks);
-	printf("MID: %d\n", mid);
-	// // while (stack_a->top < stack_a->capacity - 1 && mid)
-	// // {
-	// // }
+	while (stack_a->top < stack_a->capacity - 1)
+	{
+		if (is_b_sorted(stack_b))
+			while (stack_a->top < stack_a->capacity - 1)
+				push(stack_b, stack_a);
+		// mid = get_mid_chunk(stack_b, chunks);
+	}
 	free(chunks->stack);
 	free(chunks);
 }

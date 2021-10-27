@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:38:47 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 11:05:43 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/27 14:55:50 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	for(int i = stack_b->top; i >= 0; i--)
         printf("%d\n", stack_b->stack[i]);
 	puts("\n");
-		if (is_sorted(stack_a))
+	if (is_sorted(stack_a))
 		return ;
 	if (stack_a->capacity == 2)
 		swap(stack_a);
@@ -40,5 +40,4 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	for(int i = stack_b->top; i >= 0; i--)
         printf("%d\n", stack_b->stack[i]);
 	puts("\n");
-	
 }
