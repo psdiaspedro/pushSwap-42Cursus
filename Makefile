@@ -15,7 +15,8 @@ SRC_FILES =	push_swap.c \
 			sort_simple.c \
 			sort_complex.c \
 			insertion_sort.c \
-			validate2.c 
+			validate2.c \
+			sort_complex_utils.c 
 
 SRC =		$(addprefix sources/, $(SRC_FILES))
 
