@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:01:31 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 07:50:27 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/27 12:24:28 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,19 @@ t_stack	*create_stack(int capacity, char c)
 	return (stack);
 }
 
-int	*init_copy(int *array, int len)
+int	*init_copy(int *array, int start, int end)
 {
 	int	*copy;
 	int	i;
+	int len;
 
+	len = end - start + 1;
 	copy = malloc(sizeof(int) * len);
-	i = 0;
-	while (i < len)
+	i = end;
+	while (i >= start)
 	{
 		copy[i] = array[i];
-		i++;
+		i--;
 	}
 	return (copy);
 }

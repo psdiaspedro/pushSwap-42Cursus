@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:31:46 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 11:09:02 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/27 12:30:06 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,6 @@ int		capacity_chunk(int capacity)
 		i++;
 	}
 	return (i);
-}
-
-int	is_mid_smaller(t_stack *stack, int mid)
-{
-	int	i;
-	i = 0;
-	while (i <= stack->top)
-	{
-		if (stack->stack[i] >= mid)
-			i++;
-		else
-			return (0);
-	}
-	return (1);
 }
 
 int	get_chunk(t_stack *stack_a, t_stack *stack_b, int mid)
@@ -74,16 +60,43 @@ int	get_mid(t_stack *stack)
 	int	*copy;
 	int	mid;
 
-	copy = init_copy(stack->stack, stack->top + 1);
+	copy = init_copy(stack->stack, 0, stack->top);
 	mid = insertion_sort(copy, stack->top + 1);
 	free(copy);
 	return (mid);
 }
 
+int	get_mid_chunk(t_stack *stack, t_stack *chunks)
+{
+	int	*copy;
+	int	mid;
+	int start;
+	int end;
+
+	start = stack->top + 1 - chunks->stack[chunks->top];
+	end = stack->top;
+	copy = init_copy(stack->stack, start, end);
+	mid = insertion_sort(copy, stack->top + 1);
+	free(copy);
+	return (mid);
+}
+
+void	sorting_last_items(t_stack *stack_a, t_stack *stack_b, t_stack *chunks)
+{
+	if (!is_sorted(stack_a))
+		swap(stack_a);
+	if (chunks->stack[chunks->top] == 1)
+	{
+		push(stack_b, stack_a);
+		chunks->stack[chunks->top] = 0;
+		chunks->top--;
+	}
+}
+
 void	complex_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	mid;
-	t_stack *chunks;
+	t_stack	*chunks;
 
 	chunks = create_stack(capacity_chunk(stack_a->capacity), 'c');
 	while (stack_a->top > 1 && !is_sorted(stack_a))
@@ -92,7 +105,13 @@ void	complex_sort(t_stack *stack_a, t_stack *stack_b)
 		chunks->top++;
 		chunks->stack[chunks->top] = get_chunk(stack_a, stack_b, mid);
 	}
+	sorting_last_items(stack_a, stack_b, chunks);
+	mid = get_mid_chunk(stack_b, chunks);
+	printf("MID: %d\n", mid);
+	// // while (stack_a->top < stack_a->capacity - 1 && mid)
+	// // {
+	// // }
 	free(chunks->stack);
 	free(chunks);
 }
-//0 1 3 4 5 6 7 9 10 11 12 15
+

@@ -6,26 +6,12 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:08:51 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 10:46:49 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/27 11:13:16 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	is_sorted(t_stack *stack) //1 2 3
-{
-	int	i;
-
-	i = stack->top; //8
-	while (i >= 1)
-	{
-		if(stack->stack[i] < stack->stack[i - 1])
-			i--;
-		else
-			return (0);
-	}
-	return (1);
-}
 
 static int	is_integer(char **argv)
 {
