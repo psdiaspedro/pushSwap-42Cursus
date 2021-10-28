@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:13:06 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 16:02:05 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/28 16:54:17 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,15 @@ int	is_chunk_sorted(t_stack *stack, int len)
 	int	j;
 
 	copy = malloc(sizeof(int) * len);
-	i = stack->top + 1 - len;
-	j = 0;
+	i = stack->top + 1 - len; //0
+	j = 0; //0
 	while (i <= stack->top)
 	{
-		copy[j] = stack->stack[i++];
+		copy[j] = stack->stack[i];
+		i++;
 		j++;
 	}
-	i = len - 1;
+	i = len - 1; //0
 	while (i >= 1)
 	{
 		if(copy[i] > copy[i - 1])
@@ -96,13 +97,44 @@ int	is_mid_higher(t_stack *stack, t_stack *chunks, int mid)
 	j = 0;
 	while (i <= stack->top)
 	{
-		copy[j] = stack->stack[i++];
+		copy[j] = stack->stack[i];
+		i++;
 		j++;
 	}
 	i = 0;
 	while (i <= j)
 	{
 		if (copy[i] <= mid)
+			i++;
+		else
+		{
+			free(copy);
+			return (0);
+		}
+	}
+	free(copy);
+	return (1);
+}
+
+int	is_mid_smaller_chunk(t_stack *stack, int mid, int len)
+{
+	int	*copy;
+	int	i;
+	int	j;
+
+	copy = malloc(sizeof(int) * len);
+	i = stack->top + 1 - len; //
+	j = 0;
+	while (i <= stack->top)
+	{
+		copy[j] = stack->stack[i];
+		i++;
+		j++;
+	}
+	i = 0;
+	while (i <= j)//j = 3
+	{
+		if (copy[i] >= mid)
 			i++;
 		else
 		{

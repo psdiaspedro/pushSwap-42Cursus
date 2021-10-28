@@ -6,11 +6,12 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:21:51 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 15:22:03 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/28 16:04:43 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include <stdio.h>
 
 int		capacity_chunk(int capacity)
 {
@@ -53,6 +54,17 @@ int	get_mid_chunk(t_stack *stack, t_stack *chunks)
 		j++;
 	}
 	mid = insertion_sort(copy, chunks->stack[chunks->top]);
+	free(copy);
+	return (mid);
+}
+
+int	get_mid_chunk_a(t_stack *stack, int len)
+{
+	int	*copy;
+	int	mid;
+
+	copy = init_copy(stack->stack, stack->top - len, stack->top);
+	mid = insertion_sort(copy, len);
 	free(copy);
 	return (mid);
 }

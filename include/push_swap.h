@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:44:05 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 16:02:40 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/28 13:08:57 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ int		get_mid(t_stack *stack);
 int		get_mid_chunk(t_stack *stack, t_stack *chunks);
 int		is_chunk_sorted(t_stack *stack, int len);
 int		is_mid_higher(t_stack *stack, t_stack *chunks, int mid);
+int		is_mid_smaller_chunk(t_stack *stack, int mid, int len);
+int		get_mid_chunk_a(t_stack *stack, int len);
 
 #endif

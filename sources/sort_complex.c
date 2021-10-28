@@ -6,12 +6,31 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:31:46 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 17:19:29 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/28 16:45:23 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include <stdio.h>
+
+void	recalc_chunk(t_stack *stack_a, t_stack *stack_b, t_stack *chunks, int mid, int len)
+{
+	int	rotate_counter;
+
+	rotate_counter = 0;
+	while (stack_a->stack[stack_a->top] >= mid && !is_mid_smaller_chunk(stack_a,mid, len))
+	{
+		rotate(stack_b);
+		rotate_counter++;
+	}
+	push(stack_a, stack_b);
+	chunks->stack[chunks->top]++;
+	while(rotate_counter > 0)
+	{
+		reverse_rotate(stack_a);
+		rotate_counter--;
+	}
+}
 
 int	get_chunk(t_stack *stack_a, t_stack *stack_b, int mid)
 {
@@ -54,42 +73,36 @@ void	sorting_last_items(t_stack *stack_a, t_stack *stack_b, t_stack *chunks)
 	}
 }
 
-int	move_higher(t_stack *stack_a, t_stack *stack_b, t_stack *chunks, int mid)
+void	move_higher(t_stack *stack_a, t_stack *stack_b, t_stack *chunks, int mid)
 {
-	int	push_counter;
 	int	rotate_counter;
 
-	push_counter = 0;
 	rotate_counter = 0;
-	while (!is_mid_higher(stack_b, chunks, mid))
+	while (stack_b->stack[stack_b->top] <= mid && !is_mid_higher(stack_b, chunks, mid))
 	{
-		if (stack_b->stack[stack_b->top] > mid)
+		rotate(stack_b);
+		rotate_counter++;
+	}
+	push(stack_b, stack_a);
+	chunks->stack[chunks->top]--;
+	if(chunks->top > 0)
+	{
+		while(rotate_counter > 0)
 		{
-			push(stack_b, stack_a);
-			push_counter++;
-		}
-		else
-		{
-			rotate(stack_b);
-			rotate_counter++;
+			reverse_rotate(stack_b);
+			rotate_counter--;
 		}
 	}
-	while(rotate_counter > 0)
-	{
-		reverse_rotate(stack_b);
-		rotate_counter--;
-	}
-	return (push_counter);
 }
 
 void	move_chunk(t_stack *stack_a, t_stack *stack_b, t_stack *chunks)
 {
-	int	mid;
+ 	int	mid;
+	int	pushs_to_a;
 
-	while (chunks->stack[chunks->top] > 0)
-	{
-		mid = get_mid_chunk(stack_b, chunks);
-		while (!is_mid_higher(stack_b, chunks, mid))
+ 	while (chunks->stack[chunks->top] > 0)
+ 	{
+		if (chunks->stack[chunks->top] <= 2)
 		{
 			if (is_chunk_sorted(stack_b, chunks->stack[chunks->top]))
 			{
@@ -97,9 +110,43 @@ void	move_chunk(t_stack *stack_a, t_stack *stack_b, t_stack *chunks)
 				chunks->stack[chunks->top]--;
 			}
 			else
-				move_higher(stack_a, stack_b, chunks, mid);
+				swap(stack_b);
 		}
-	}
+		else
+		{
+			mid = get_mid_chunk(stack_b, chunks);
+			printf("mid: %d\n", mid);
+			pushs_to_a = 0;
+			while (!is_mid_higher(stack_b, chunks, mid))
+			{
+				if (is_chunk_sorted(stack_b, chunks->stack[chunks->top]))
+				{
+					push(stack_b, stack_a);
+					chunks->stack[chunks->top]--;
+				}
+				else
+				{
+					move_higher(stack_a, stack_b, chunks, mid);
+					pushs_to_a++;
+				}
+			}
+			while (!is_sorted(stack_a))
+			{
+				if(pushs_to_a == 2)
+				{
+					swap(stack_a);
+					pushs_to_a++;
+				}
+				else
+				{
+					mid = get_mid_chunk_a(stack_a, pushs_to_a);
+					recalc_chunk(stack_a, stack_b, chunks, mid, pushs_to_a);
+				}
+			}
+		}
+ 	}
+	if (chunks->stack[chunks->top] == 0)
+		chunks->top--;
 }
 
 void	complex_sort(t_stack *stack_a, t_stack *stack_b)
@@ -111,19 +158,18 @@ void	complex_sort(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a->top > 1 && !is_sorted(stack_a))
 	{
 		mid = get_mid(stack_a);
+		printf("mid: %d\n", mid);
 		chunks->top++;
 		chunks->stack[chunks->top] = get_chunk(stack_a, stack_b, mid);
 	}
 	sorting_last_items(stack_a, stack_b, chunks);
-	while (stack_a->top < stack_a->capacity - 1)
+	printf("começo da logica da B\n");
+	while (stack_b->top > -1)
 	{
 		if (is_b_sorted(stack_b))
 			push(stack_b, stack_a);
 		else
-		{
 			move_chunk(stack_a, stack_b, chunks);
-			chunks->top--;
-		}
 	}
 	free(chunks->stack);
 	free(chunks);
