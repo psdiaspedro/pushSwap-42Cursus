@@ -1,6 +1,6 @@
 NAME =		push_swap
 CC =		clang
-CFLAGS =	-Wall -Werror -Wextra
+CFLAGS =	-g -Wall -Werror -Wextra
 RM =		rm -rf
 
 LIBFT_DIR =	./libft
@@ -16,7 +16,7 @@ SRC_FILES =	push_swap.c \
 			sort_complex.c \
 			insertion_sort.c \
 			validate2.c \
-			sort_complex_utils.c 
+			sort_complex_utils.c
 
 SRC =		$(addprefix sources/, $(SRC_FILES))
 

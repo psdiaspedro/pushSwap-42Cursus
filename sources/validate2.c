@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:13:06 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/28 16:54:17 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/29 11:45:41 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	is_mid_higher(t_stack *stack, t_stack *chunks, int mid)
 		j++;
 	}
 	i = 0;
-	while (i <= j)
+	while (i < j)
 	{
 		if (copy[i] <= mid)
 			i++;

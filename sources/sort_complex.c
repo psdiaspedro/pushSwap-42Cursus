@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:31:46 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/28 16:45:23 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/29 11:53:40 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	recalc_chunk(t_stack *stack_a, t_stack *stack_b, t_stack *chunks, int mid, 
 	rotate_counter = 0;
 	while (stack_a->stack[stack_a->top] >= mid && !is_mid_smaller_chunk(stack_a,mid, len))
 	{
-		rotate(stack_b);
+		rotate(stack_a);
 		rotate_counter++;
 	}
 	push(stack_a, stack_b);
@@ -44,11 +44,10 @@ int	get_chunk(t_stack *stack_a, t_stack *stack_b, int mid)
 		chunk++;
 	}
 	i = 0;
-	while (stack_a->stack[i] < mid && !is_sorted(stack_a) && stack_a->top > 1)
+	while (stack_a->stack[0] < mid && !is_sorted(stack_a) && stack_a->top > 1)
 	{
 		reverse_rotate(stack_a);
 		push(stack_a, stack_b);
-		i++;
 		chunk++;
 	}
 	while (!is_mid_smaller(stack_a, mid))
@@ -115,7 +114,7 @@ void	move_chunk(t_stack *stack_a, t_stack *stack_b, t_stack *chunks)
 		else
 		{
 			mid = get_mid_chunk(stack_b, chunks);
-			printf("mid: %d\n", mid);
+			// printf("mid: %d\n", mid);
 			pushs_to_a = 0;
 			while (!is_mid_higher(stack_b, chunks, mid))
 			{
@@ -141,6 +140,7 @@ void	move_chunk(t_stack *stack_a, t_stack *stack_b, t_stack *chunks)
 				{
 					mid = get_mid_chunk_a(stack_a, pushs_to_a);
 					recalc_chunk(stack_a, stack_b, chunks, mid, pushs_to_a);
+					pushs_to_a--;
 				}
 			}
 		}
@@ -158,12 +158,12 @@ void	complex_sort(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a->top > 1 && !is_sorted(stack_a))
 	{
 		mid = get_mid(stack_a);
-		printf("mid: %d\n", mid);
+		// printf("mid: %d\n", mid);
 		chunks->top++;
 		chunks->stack[chunks->top] = get_chunk(stack_a, stack_b, mid);
 	}
 	sorting_last_items(stack_a, stack_b, chunks);
-	printf("começo da logica da B\n");
+
 	while (stack_b->top > -1)
 	{
 		if (is_b_sorted(stack_b))
