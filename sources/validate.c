@@ -6,12 +6,11 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:08:51 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/27 11:13:16 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/30 18:20:26 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
 
 static int	is_integer(char **argv)
 {
@@ -62,7 +61,7 @@ static int	is_duplicate(char **argv)
 		holder = ft_atoi(argv[i]);
 		while (argv[j])
 		{
-			if(holder == ft_atoi(argv[j]))
+			if (holder == ft_atoi(argv[j]))
 				return (0);
 			j++;
 		}

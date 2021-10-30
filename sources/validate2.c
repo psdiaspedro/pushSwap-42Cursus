@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:13:06 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/29 16:09:23 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/30 18:20:05 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_sorted(t_stack *stack)
 	i = stack->top;
 	while (i >= 1)
 	{
-		if(stack->stack[i] < stack->stack[i - 1])
+		if (stack->stack[i] < stack->stack[i - 1])
 			i--;
 		else
 			return (0);
@@ -34,7 +34,7 @@ int	is_b_sorted(t_stack *stack)
 	i = stack->top;
 	while (i >= 1)
 	{
-		if(stack->stack[i] > stack->stack[i - 1])
+		if (stack->stack[i] > stack->stack[i - 1])
 			i--;
 		else
 			return (0);

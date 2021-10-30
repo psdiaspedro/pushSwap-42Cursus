@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:31:43 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/29 14:26:48 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/30 18:28:11 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	small_sort(t_stack *stack_a, t_stack *stack_b)
 	}
 	short_sort(stack_a);
 	push(stack_b, stack_a);
-	if(stack_a->capacity == 5)
+	if (stack_a->capacity == 5)
 		push(stack_b, stack_a);
 }
 

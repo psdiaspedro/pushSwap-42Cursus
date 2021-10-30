@@ -6,12 +6,11 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:01:31 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/29 16:07:29 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/30 18:31:59 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
 
 t_stack	*create_stack(int capacity, char c)
 {
@@ -24,11 +23,10 @@ t_stack	*create_stack(int capacity, char c)
 	stack->top = -1;
 	stack->stack = malloc(capacity * sizeof(int));
 	stack->c = c;
-
 	return (stack);
 }
 
-void	init_stack(t_stack *stack , char **argv)
+void	init_stack(t_stack *stack, char **argv)
 {
 	int	i;
 	int	j;

@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:24:27 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/22 14:36:52 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/30 18:27:57 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	double_swap(t_stack *stack_a, t_stack *stack_b)
 
 	holder_a = stack_a->stack[stack_a->top];
 	stack_a->stack[stack_a->top] = stack_a->stack[stack_a->top - 1];
-	stack_a->stack[stack_a->top - 1] =  holder_a;
+	stack_a->stack[stack_a->top - 1] = holder_a;
 	holder_b = stack_b->stack[stack_b->top];
 	stack_b->stack[stack_b->top] = stack_b->stack[stack_b->top - 1];
-	stack_b->stack[stack_b->top - 1] =  holder_b;
+	stack_b->stack[stack_b->top - 1] = holder_b;
 	write(1, "ss\n", 3);
 }
 
@@ -37,7 +37,7 @@ void	double_rotate(t_stack *stack_a, t_stack *stack_b)
 	holder_top_a = stack_a->top;
 	while (holder_top_a > 0)
 	{
-		stack_a->stack[holder_top_a] = stack_a->stack[holder_top_a -  1];
+		stack_a->stack[holder_top_a] = stack_a->stack[holder_top_a - 1];
 		holder_top_a--;
 	}
 	stack_a->stack[holder_top_a] = holder_a;
@@ -45,7 +45,7 @@ void	double_rotate(t_stack *stack_a, t_stack *stack_b)
 	holder_top_b = stack_b->top;
 	while (holder_top_b > 0)
 	{
-		stack_b->stack[holder_top_b] = stack_b->stack[holder_top_b -  1];
+		stack_b->stack[holder_top_b] = stack_b->stack[holder_top_b - 1];
 		holder_top_b--;
 	}
 	stack_b->stack[holder_top_b] = holder_b;
@@ -63,7 +63,7 @@ void	double_reverse_rotate(t_stack *stack_a, t_stack *stack_b)
 	holder_a = stack_a->stack[i];
 	while (i < stack_a->top)
 	{
-		stack_a->stack[i] = stack_a->stack[i +  1];
+		stack_a->stack[i] = stack_a->stack[i + 1];
 		i++;
 	}
 	stack_a->stack[i] = holder_a;
@@ -71,7 +71,7 @@ void	double_reverse_rotate(t_stack *stack_a, t_stack *stack_b)
 	holder_b = stack_b->stack[j];
 	while (j < stack_b->top)
 	{
-		stack_b->stack[j] = stack_b->stack[j +  1];
+		stack_b->stack[j] = stack_b->stack[j + 1];
 		j++;
 	}
 	stack_b->stack[j] = holder_b;
