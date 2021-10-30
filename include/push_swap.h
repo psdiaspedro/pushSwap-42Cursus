@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:44:05 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/28 13:08:57 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/29 21:26:33 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ typedef struct s_stack
 	char	c;
 }	t_stack;
 
-void	init_stack(t_stack *stack , char **argv);
-t_stack	*create_stack(int capacity, char c);
 int		validate(char **argv);
 void	swap(t_stack *stack);
 void	push(t_stack *stack_src, t_stack *stack_dst);
@@ -38,19 +36,20 @@ void	double_swap(t_stack *stack_a, t_stack *stack_b);
 void	double_rotate(t_stack *stack_a, t_stack *stack_b);
 void	double_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
 void	sort(t_stack *stack_a, t_stack *stack_b);
-int		is_sorted(t_stack *stack);
-void	simple_sort(t_stack *stack);
 void	complex_sort(t_stack *stack_a, t_stack *stack_b);
-int		insertion_sort(int array[], int len);
-int		*init_copy(int *array, int start, int end);
-int		is_mid_smaller(t_stack *stack, int mid);
 int		is_b_sorted(t_stack *stack);
-int		capacity_chunk(int capacity);
-int		get_mid(t_stack *stack);
-int		get_mid_chunk(t_stack *stack, t_stack *chunks);
-int		is_chunk_sorted(t_stack *stack, int len);
-int		is_mid_higher(t_stack *stack, t_stack *chunks, int mid);
-int		is_mid_smaller_chunk(t_stack *stack, int mid, int len);
-int		get_mid_chunk_a(t_stack *stack, int len);
+int		find_smaller(t_stack *stack);
+int		find_higher(t_stack *stack);
+void	simple_sort(t_stack *stack_a, t_stack *stack_b);
+int		is_sorted(t_stack *stack);
+void	init_stack(t_stack *stack , char **argv);
+t_stack	*create_stack(int capacity, char c);
+int		get_moves(t_stack *stack_a, int value);
+int		get_position(t_stack *stack_a, int moves, int value);
+void	moves_one(t_stack *stack_a, t_stack *stack_b, int idx_a, int idx_b);
+void	moves_two(t_stack *stack_a, t_stack *stack_b, int idx_a, int idx_b);
+void	moves_three(t_stack *stack_a, t_stack *stack_b, int idx_a, int idx_b);
+void	moves_four(t_stack *stack_a, t_stack *stack_b, int idx_a, int idx_b);
+void	moves_five(t_stack *stack_a);
 
 #endif

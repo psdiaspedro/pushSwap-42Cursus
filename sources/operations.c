@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:34:11 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/22 14:29:58 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/29 16:09:59 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,3 @@ void	reverse_rotate(t_stack *stack)
 	write(1, &stack->c, 1);
 	write(1, "\n", 1);
 }
-
-/*
-	typedef struct s_stack
-	{
-		int	capacity;
-		int	top;
-		int	*stack;
-	}	t_stack;
-*/
