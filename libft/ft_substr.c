@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugusto <paugusto@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 23:34:37 by paugusto          #+#    #+#             */
-/*   Updated: 2021/10/05 09:21:03 by paugusto         ###   ########.fr       */
+/*   Updated: 2021/10/30 18:40:54 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	else
 		sub = malloc(((slen - start) * sizeof(char) + 1));
 	if (!sub)
-		 return (NULL);
+		return (NULL);
 	if ((start < slen))
 	{
 		while ((i < len) && s[j])

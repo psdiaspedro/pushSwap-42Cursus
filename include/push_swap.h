@@ -6,7 +6,7 @@
 /*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:44:05 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/29 21:26:33 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/10/30 18:40:15 by pedroadias       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		find_smaller(t_stack *stack);
 int		find_higher(t_stack *stack);
 void	simple_sort(t_stack *stack_a, t_stack *stack_b);
 int		is_sorted(t_stack *stack);
-void	init_stack(t_stack *stack , char **argv);
+void	init_stack(t_stack *stack, char **argv);
 t_stack	*create_stack(int capacity, char c);
 int		get_moves(t_stack *stack_a, int value);
 int		get_position(t_stack *stack_a, int moves, int value);
