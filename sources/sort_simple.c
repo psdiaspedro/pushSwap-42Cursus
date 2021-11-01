@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedroadias <pedroadias@student.42.fr>      +#+  +:+       +#+        */
+/*   By: paugusto <paugusto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:31:43 by pedroadias        #+#    #+#             */
-/*   Updated: 2021/10/30 18:28:11 by pedroadias       ###   ########.fr       */
+/*   Updated: 2021/11/01 19:39:21 by paugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,29 @@
 
 void	short_sort(t_stack *stack)
 {
-	if ((stack->stack[0] > stack->stack[1])
-		&& (stack->stack[0] > stack->stack[2]))
-		swap(stack);
-	else if ((stack->stack[0] < stack->stack[1])
-		&& (stack->stack[0] < stack->stack[2])
-		&& (stack->stack[2] > stack->stack[1]))
+	if (!is_sorted(stack))
 	{
-		rotate(stack);
-		swap(stack);
-	}
-	else if ((stack->stack[0] < stack->stack[1])
-		&& (stack->stack[0] < stack->stack[2]))
-		reverse_rotate(stack);
-	else if ((stack->stack[0] > stack->stack[1])
-		&& (stack->stack[0] < stack->stack[2]))
-		rotate(stack);
-	else
-	{
-		swap(stack);
-		rotate(stack);
+		if ((stack->stack[0] > stack->stack[1])
+			&& (stack->stack[0] > stack->stack[2]))
+			swap(stack);
+		else if ((stack->stack[0] < stack->stack[1])
+			&& (stack->stack[0] < stack->stack[2])
+			&& (stack->stack[2] > stack->stack[1]))
+		{
+			rotate(stack);
+			swap(stack);
+		}
+		else if ((stack->stack[0] < stack->stack[1])
+			&& (stack->stack[0] < stack->stack[2]))
+			reverse_rotate(stack);
+		else if ((stack->stack[0] > stack->stack[1])
+			&& (stack->stack[0] < stack->stack[2]))
+			rotate(stack);
+		else
+		{
+			swap(stack);
+			rotate(stack);
+		}
 	}
 }
 

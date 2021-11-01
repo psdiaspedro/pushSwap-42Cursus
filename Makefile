@@ -1,6 +1,6 @@
 NAME =		push_swap
 CC =		clang
-CFLAGS =	-Wall -Werror -Wextra
+CFLAGS =	-g -Wall -Werror -Wextra
 RM =		rm -rf
 
 LIBFT_DIR =	./libft
